@@ -1,0 +1,39 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacies de garde - Filtrer</title>
+
+    <!-- Lien vers Bootstrap CSS via CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+    <center>
+        <h1 class="mt-5 mb-4">Les pharmacies de garde au Congo. <br><small>Choisir une ville et une date.</small> </h1>
+    </center>
+
+    <!-- Formulaire de filtrage -->
+    <form method="get" action="{% url 'resultat_pharmacies' %}" class="border p-4 shadow-sm rounded">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for=""> <b>Sélectionné une ville</b></label> <br>
+            {{ form.ville }}
+            <!-- Appliquer les classes custom-select -->
+            {% comment %} {{ form.ville|add_class:"custom-select custom-select-lg mb-3" }} {% endcomment %}
+        </div><br>
+        <div class="form-group">
+            <label for=""> <b>Sélectionné une date</b></label> <br>
+            {{ form.periode }}
+            <!-- Appliquer les classes custom-select sm -->
+            {% comment %} {{ form.periode|add_class:"custom-select custom-select-sm" }} {% endcomment %}
+        </div>
+        <button type="submit" class="btn btn-outline-success">Voir les pharmacies</button>
+        
+    </form>
+</body>
+</html>
+
